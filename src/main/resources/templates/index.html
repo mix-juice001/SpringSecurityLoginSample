@@ -11,9 +11,11 @@
 <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
 <h1 th:inline="text" th:if="${#httpServletRequest.remoteUser}">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
+<div sec:authorize="hasRole('ROLE_ADMIN')">This is Admin</div>
+<div sec:authorize="hasRole('ROLE_USER')">This is User</div>
 
 <a th:href="@{/hello}">一般ページ</a><br/>
-<a th:href="@{/admin}">管理者ページ</a><br/>
+<a th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">本当の管理者ページ（管理者しか見えないリンク）</a><br/>
 <a th:href="@{/admin}">管理者ページ</a><br/>
 </body>
 </html>
