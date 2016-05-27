@@ -9,9 +9,13 @@ import java.util.List;
 
 public class User implements UserDetails {
 
-    String username;
-    String password;
+    UserBasis basis;
     List<GrantedAuthority> authorities = new ArrayList<>(); // TODO: 5/25/16
+
+    public User(UserBasis basis, List<GrantedAuthority> roles) {
+        this.basis = basis;
+        this.authorities = roles;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -20,12 +24,12 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return basis.password;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return basis.username;
     }
 
     @Override
