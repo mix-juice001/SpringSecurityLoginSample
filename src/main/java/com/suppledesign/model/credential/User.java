@@ -3,14 +3,13 @@ package com.suppledesign.model.credential;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class User implements UserDetails {
 
     UserBasis basis;
-    List<GrantedAuthority> authorities = new ArrayList<>(); // TODO: 5/25/16
+    List<GrantedAuthority> authorities;
 
     public User(UserBasis basis, List<GrantedAuthority> roles) {
         this.basis = basis;
