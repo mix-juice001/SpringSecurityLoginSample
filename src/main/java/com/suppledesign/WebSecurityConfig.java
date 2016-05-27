@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
@@ -64,8 +65,14 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .userDetailsService(userDetailsService)
-//            .passwordEncoder(new BCryptPasswordEncoder())
+            .passwordEncoder(new BCryptPasswordEncoder())
         ;
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(BCrypt.hashpw("password", BCrypt.gensalt()));
+//        System.out.println(BCrypt.hashpw("password", BCrypt.gensalt()));
+//        System.out.println(BCrypt.hashpw("password", BCrypt.gensalt()));
+//    }
 
 }
